@@ -20,3 +20,6 @@ MonoBehaviour:
   jumpTime: 0.2
   jumpMultiplier: 0.1
   jumpDecayPercentage: 0.8
+  mutiplierScale: 0.5
+  changeSizeDuration: 2
+  changeSizeCoolDown: 5

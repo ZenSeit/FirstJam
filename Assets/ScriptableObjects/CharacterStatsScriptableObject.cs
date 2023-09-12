@@ -14,4 +14,9 @@ public class CharacterStatsScriptableObject : ScriptableObject
     public float jumpTime;
     public float jumpMultiplier;
     public float jumpDecayPercentage;
+
+    [Header("ChangeSize system")]
+    public float mutiplierScale;
+    public float changeSizeDuration;
+    public float changeSizeCoolDown;
 }
