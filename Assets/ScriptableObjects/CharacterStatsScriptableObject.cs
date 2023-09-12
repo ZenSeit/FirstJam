@@ -19,4 +19,10 @@ public class CharacterStatsScriptableObject : ScriptableObject
     public float mutiplierScale;
     public float changeSizeDuration;
     public float changeSizeCoolDown;
+
+    [Header("Life system")]
+    public int maxHealth;
+    public int lifes;
+
+
 }

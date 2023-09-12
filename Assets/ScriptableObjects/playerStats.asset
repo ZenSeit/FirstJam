@@ -23,3 +23,5 @@ MonoBehaviour:
   mutiplierScale: 0.5
   changeSizeDuration: 2
   changeSizeCoolDown: 5
+  maxHealth: 100
+  lifes: 3

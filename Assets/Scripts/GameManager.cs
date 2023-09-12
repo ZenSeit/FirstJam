@@ -49,12 +49,13 @@ public class GameManager : MonoBehaviour
         playerInstance.transform.position = currentCheckpoint.position;
     }
 
-    private void Update()
+    [ContextMenu("Game Over")]
+    public void GameOver()
     {
-        if (Input.GetKey(KeyCode.K)) 
-        {
-            PlayerDied();
-        }
+        currentCheckpoint= Instance.transform;
+        SpawnPlayer();
+
     }
+
 }
 
