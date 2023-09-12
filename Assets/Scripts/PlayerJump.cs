@@ -107,10 +107,6 @@ public class PlayerJump : MonoBehaviour
         {
             rb.velocity -= gravity * characterStats.fallMultiplier * Time.fixedDeltaTime;
         }
-
-        // Apply horizontal movement, if the player is not pressing any move key then the character stops
-        // rb.velocity = new Vector2(moveInput * characterStats.moveSpeed, rb.velocity.y);
-
     }
 
     /// <summary>

@@ -46,8 +46,7 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Player Died")]
     public void PlayerDied()
     {
-        // logic for the player dying
-        SpawnPlayer();
+        playerInstance.transform.position = currentCheckpoint.position;
     }
 
     private void Update()
