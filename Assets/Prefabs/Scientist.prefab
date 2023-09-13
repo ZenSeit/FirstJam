@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 979410342295051501}
   - component: {fileID: 6728068393381831640}
   - component: {fileID: 7514188154139247121}
+  - component: {fileID: 4882828022617247348}
   m_Layer: 3
   m_Name: Scientist
   m_TagString: Player
@@ -230,11 +231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: c6ae5d8a25eee5e43ad67606fcc51c43, type: 2}
-  whatIsObject:
-    serializedVersion: 2
-    m_Bits: 64
-  grabpoint: {fileID: 6898701761483539349}
-  objectCheckDistance: 0
+  facingDir: 1
+  isFacingRight: 1
+  canFlip: 1
 --- !u!114 &727378642900985913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,3 +294,16 @@ MonoBehaviour:
     m_Bits: 64
   grabpoint: {fileID: 6898701761483539349}
   objectCheckDistance: 0.8
+--- !u!114 &4882828022617247348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069427469069732147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896a00eac5125544a863fe5149056055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  artifactsToCollect: 3
