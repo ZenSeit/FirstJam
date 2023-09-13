@@ -13,10 +13,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 playerInput;
     private Vector2 desiredSpeed;
     private Vector2 currentSpeed;
+
+    [Header("Animation")]
+    private Animator animator;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerControls = new PlayerInputActions();
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -33,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         playerInput = move.ReadValue<Vector2>();
+        animator.SetFloat("Horizontal", Mathf.Abs(playerInput.x));
     }
 
     private void FixedUpdate()
