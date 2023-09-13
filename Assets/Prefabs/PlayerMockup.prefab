@@ -250,10 +250,13 @@ MonoBehaviour:
   groundCheck: {fileID: 8612267489419756815}
   groundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 192
   obstaclesMask:
     serializedVersion: 2
     m_Bits: 64
+  combinedMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &979410342295051501
 MonoBehaviour:
   m_ObjectHideFlags: 0
