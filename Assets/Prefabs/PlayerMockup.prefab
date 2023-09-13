@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 4694123778489171761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.435, z: 0}
+  m_LocalPosition: {x: 0, y: -0.293, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 979410342295051501}
   - component: {fileID: 6728068393381831640}
   - component: {fileID: 7514188154139247121}
+  - component: {fileID: 7183309476548428133}
   m_Layer: 3
   m_Name: PlayerMockup
   m_TagString: Player
@@ -96,7 +97,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.0348809, y: 2.0348809, z: 2.0348809}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8612267489419756815}
@@ -144,7 +145,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -606290206, guid: db83734f69675cb4d89885592a52294a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,8 +188,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: -0.075303964, y: -0.016022667}
+  m_Size: {x: 0.41165772, y: 0.5534961}
   m_Direction: 0
 --- !u!50 &8313507458044486325
 Rigidbody2D:
@@ -230,6 +231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: c6ae5d8a25eee5e43ad67606fcc51c43, type: 2}
+  facingDir: 1
+  isFacingRight: 1
+  canFlip: 1
 --- !u!114 &727378642900985913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +251,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1
+  obstaclesMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &979410342295051501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,3 +297,24 @@ MonoBehaviour:
     m_Bits: 64
   grabpoint: {fileID: 6898701761483539349}
   objectCheckDistance: 0.8
+--- !u!95 &7183309476548428133
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069427469069732147}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 075ec3e154db9624cab2cd9fc7eaacf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

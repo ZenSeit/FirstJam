@@ -21,11 +21,20 @@ public class PlayerJump : MonoBehaviour
     public Transform groundCheck; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
     private Vector2 capsuleSize = new Vector2(0.55f, 0.17f); // Size obtained by visually measuring the capsule in the scene at the specified Transform
     public LayerMask groundMask; // Layer of the ground to detect whenever the player touch the ground
+    public LayerMask obstaclesMask;
+    public LayerMask combinedMask;
+
+    [Header("Animation")]
+    private Animator animator;
+    
+
+    
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerControls = new PlayerInputActions();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -45,6 +54,7 @@ public class PlayerJump : MonoBehaviour
         isJumpPressed = false;
         isJumping = false;
         gravity = new Vector2(0, -Physics2D.gravity.y);
+        combinedMask = groundMask | obstaclesMask;
     }
 
     void Update()
@@ -69,6 +79,7 @@ public class PlayerJump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, characterStats.jumpForce);
             jumpCounter = 0;
             jumpBuffer = false;
+            
         }
 
         if (!isJumpPressed)
@@ -82,6 +93,7 @@ public class PlayerJump : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * characterStats.jumpDecayPercentage);
             }
+            
         }
 
         // Handles dynamic jumping and dynamic fall
@@ -100,10 +112,12 @@ public class PlayerJump : MonoBehaviour
                 currentJump = characterStats.jumpMultiplier * (1 - t);
             }
 
+            
             rb.velocity += gravity * currentJump * Time.fixedDeltaTime;
         }
 
-        if (rb.velocity.y < 0)
+        
+        if (rb.velocity.y <= 0)
         {
             rb.velocity -= gravity * characterStats.fallMultiplier * Time.fixedDeltaTime;
         }
@@ -115,7 +129,12 @@ public class PlayerJump : MonoBehaviour
     /// <returns><c>true</c> if the player is grounded; otherwise, <c>false</c>.</returns>
     private bool isGrounded()
     {
-        return Physics2D.OverlapCapsule(groundCheck.position, capsuleSize, CapsuleDirection2D.Horizontal, 0, groundMask);
+        return Physics2D.OverlapCapsule(groundCheck.position, capsuleSize, CapsuleDirection2D.Horizontal, 0, combinedMask);
     }
+    private void LateUpdate()
+    {
+        animator.SetBool("OnGround", rb.velocity.y== 0);
+    }
+
 }
 
