@@ -24,19 +24,14 @@ public class PlayerGrab : MonoBehaviour
         if (hit && Input.GetKey(KeyCode.E))
         {
             movement.canFlip = false;
-            //hit.rigidbody.bodyType = RigidbodyType2D.Dynamic;
-            hit.rigidbody.mass = 0f;
-            //hit.rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            hit.rigidbody.mass = 1f;
             hit.transform.position = transform.position - new Vector3(1 * -movement.facingDir,0,0);
         }
 
         if (Input.GetKeyUp(KeyCode.E) && hit)
         {
             hit.rigidbody.mass = 200f;
-            //hit.rigidbody.bodyType = RigidbodyType2D.Static;
             movement.canFlip = true;
-
-
         }
     }
 
