@@ -231,6 +231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: c6ae5d8a25eee5e43ad67606fcc51c43, type: 2}
+  facingDir: 1
+  isFacingRight: 1
+  canFlip: 1
 --- !u!114 &727378642900985913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +251,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1
+  obstaclesMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &979410342295051501
 MonoBehaviour:
   m_ObjectHideFlags: 0
