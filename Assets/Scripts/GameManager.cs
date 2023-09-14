@@ -22,10 +22,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     private void Start()
     {
-        SpawnPlayer();
+        //SpawnPlayer();
+        playerInstance = FindObjectOfType<PlayerMovement>().gameObject;
     }
     
     public void UpdateCheckPoint(Transform checkpoint)

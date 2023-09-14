@@ -19,7 +19,7 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D rb;
     public Transform groundCheck; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
-    private Vector2 capsuleSize = new Vector2(0.55f, 0.17f); // Size obtained by visually measuring the capsule in the scene at the specified Transform
+    private Vector2 capsuleSize = new Vector2(0.32f, 0.056f); // Size obtained by visually measuring the capsule in the scene at the specified Transform
     public LayerMask groundMask; // Layer of the ground to detect whenever the player touch the ground
     //public LayerMask obstaclesMask;
     //public LayerMask combinedMask;
@@ -68,6 +68,8 @@ public class PlayerJump : MonoBehaviour
 
         if (jump.WasReleasedThisFrame())
             isJumpPressed = false;
+
+        animator.SetBool("OnGround", isGrounded());
     }
 
     void FixedUpdate()
@@ -133,7 +135,7 @@ public class PlayerJump : MonoBehaviour
     }
     private void LateUpdate()
     {
-        animator.SetBool("OnGround", rb.velocity.y== 0);
+        //animator.SetBool("OnGround", rb.velocity.y == 0);
     }
 
 }
