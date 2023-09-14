@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 6728068393381831640}
   - component: {fileID: 7514188154139247121}
   - component: {fileID: 7183309476548428133}
+  - component: {fileID: 4428954789969947473}
   m_Layer: 3
   m_Name: PlayerMockup
   m_TagString: Player
@@ -216,7 +217,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &381658711784886576
 MonoBehaviour:
@@ -293,7 +294,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   grabpoint: {fileID: 6898701761483539349}
-  objectCheckDistance: 0.8
+  objectCheckDistance: 0.5
+  offSetGrab: {x: 0.86, y: 0.09}
+  canGrab: 1
 --- !u!95 &7183309476548428133
 Animator:
   serializedVersion: 5
@@ -315,3 +318,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4428954789969947473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069427469069732147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0af2e9e54d7b054eb53e487d2e816a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClimbSpeed: 2
