@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class InnerBehavior : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;   
     
     void Start()
     {
-       
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -21,7 +21,6 @@ public class InnerBehavior : MonoBehaviour
     {
         if(collision.gameObject.tag == "Box" || collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-
             Debug.Log("caja");
             player.GetComponent<PlayerGrab>().StartCoroutine("StopGrabbing");
         }
