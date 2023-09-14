@@ -7,6 +7,9 @@ public class PlayerGrab : MonoBehaviour
     public LayerMask whatIsObject;
     public Transform grabpoint;
     public float objectCheckDistance;
+    public Vector2 offSetGrab;
+
+    public bool canGrab = true;
 
     private PlayerMovement movement;
     private void Awake()
@@ -21,18 +24,30 @@ public class PlayerGrab : MonoBehaviour
     void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(grabpoint.position, Vector2.right *movement.facingDir , objectCheckDistance, whatIsObject);
-        if (hit && Input.GetMouseButton(0))
+        if (hit && Input.GetMouseButton(0) && canGrab)
         {
             movement.canFlip = false;
-            hit.rigidbody.mass = 1f;
-            hit.transform.position = transform.position - new Vector3(1 * -movement.facingDir,-0.3f,0);
+            //hit.rigidbody.mass = 1f;
+            hit.transform.position = transform.position - new Vector3(offSetGrab.x * -movement.facingDir, offSetGrab.y, 0);
         }
 
-        if (Input.GetMouseButtonUp(0) && hit)
+        //if (Input.GetMouseButtonUp(0) && hit)
+        //{
+        //    hit.rigidbody.mass = 200f;
+        //    movement.canFlip = true;
+        //}
+
+        if (!hit)
         {
-            hit.rigidbody.mass = 200f;
             movement.canFlip = true;
         }
+    }
+
+    public IEnumerator StopGrabbing()
+    {
+        canGrab = false;
+        yield return new WaitForSeconds(0.3f);
+        canGrab = true;
     }
 
     private void OnDrawGizmos()
