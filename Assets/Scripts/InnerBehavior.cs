@@ -21,7 +21,6 @@ public class InnerBehavior : MonoBehaviour
     {
         if(collision.gameObject.tag == "Box" || collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Debug.Log("caja");
             player.GetComponent<PlayerGrab>().StartCoroutine("StopGrabbing");
         }
     }
