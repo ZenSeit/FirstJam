@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TerrainUtils;
 /// <summary>
 /// Controls the movement of the player character.
 /// </summary>
@@ -19,7 +20,7 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D rb;
     public Transform groundCheck; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
-    private Vector2 capsuleSize = new Vector2(0.32f, 0.056f); // Size obtained by visually measuring the capsule in the scene at the specified Transform
+    private float raycastDistance = 0.3f;
     public LayerMask groundMask; // Layer of the ground to detect whenever the player touch the ground
     //public LayerMask obstaclesMask;
     //public LayerMask combinedMask;
@@ -131,12 +132,17 @@ public class PlayerJump : MonoBehaviour
     /// <returns><c>true</c> if the player is grounded; otherwise, <c>false</c>.</returns>
     private bool isGrounded()
     {
-        return Physics2D.OverlapCapsule(groundCheck.position, capsuleSize, CapsuleDirection2D.Horizontal, 0, groundMask);
+        return Physics2D.Raycast(groundCheck.position, Vector2.down, raycastDistance, groundMask);
     }
     private void LateUpdate()
     {
         //animator.SetBool("OnGround", rb.velocity.y == 0);
     }
 
+    private void OnDrawGizmos()
+    { 
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * raycastDistance);
+    }
 }
 
