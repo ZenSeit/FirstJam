@@ -37,7 +37,8 @@ public class PlayerGrab : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(grabpoint.position, new Vector3(grabpoint.position.x + objectCheckDistance * movement.facingDir, grabpoint.position.y));
+        Gizmos.DrawLine(grabpoint.position, new Vector3(grabpoint.position.x + objectCheckDistance * 1, grabpoint.position.y));
+        Gizmos.DrawLine(grabpoint.position, new Vector3(grabpoint.position.x + objectCheckDistance * -1, grabpoint.position.y));
     }
 
 }

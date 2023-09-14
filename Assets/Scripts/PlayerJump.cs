@@ -119,10 +119,10 @@ public class PlayerJump : MonoBehaviour
         }
 
         
-        if (rb.velocity.y <= 0)
-        {
-            rb.velocity -= gravity * characterStats.fallMultiplier * Time.fixedDeltaTime;
-        }
+        //if (rb.velocity.y <= 0)
+        //{
+        //    rb.velocity -= gravity * characterStats.fallMultiplier * Time.fixedDeltaTime;
+        //}
     }
 
     /// <summary>
