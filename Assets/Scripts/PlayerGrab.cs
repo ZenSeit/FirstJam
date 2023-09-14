@@ -9,12 +9,17 @@ public class PlayerGrab : MonoBehaviour
     public float objectCheckDistance;
 
     private PlayerMovement movement;
+
+    [Header("Animation")]
+    private Animator animator;
+
     private void Awake()
     {
         movement = GetComponent<PlayerMovement>();        
     }
     void Start()
     {
+        animator=GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,12 +31,14 @@ public class PlayerGrab : MonoBehaviour
             movement.canFlip = false;
             hit.rigidbody.mass = 1f;
             hit.transform.position = transform.position - new Vector3(1 * -movement.facingDir,0,0);
+            animator.SetBool("Pull", true);
         }
 
         if (Input.GetKeyUp(KeyCode.E) && hit)
         {
             hit.rigidbody.mass = 200f;
             movement.canFlip = true;
+            animator.SetBool("Pull", false);
         }
     }
 
