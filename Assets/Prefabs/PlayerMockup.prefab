@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 6728068393381831640}
   - component: {fileID: 7514188154139247121}
   - component: {fileID: 7183309476548428133}
+  - component: {fileID: 4371880167000300006}
   - component: {fileID: 4428954789969947473}
   m_Layer: 3
   m_Name: PlayerMockup
@@ -318,6 +319,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4371880167000300006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069427469069732147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896a00eac5125544a863fe5149056055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  artifactsToCollect: 3
+  artifactsText: {fileID: 0}
 --- !u!114 &4428954789969947473
 MonoBehaviour:
   m_ObjectHideFlags: 0

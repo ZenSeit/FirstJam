@@ -14,7 +14,7 @@ public class CollectArtifacts : MonoBehaviour
         artifactsCollected++;
         if (artifactsCollected >= artifactsToCollect)
         {
-            Debug.Log("You win!");
+            GameManager.Instance.YouWin();
         }
         ChangeItemsHUD();
     }
