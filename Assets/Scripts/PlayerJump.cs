@@ -134,10 +134,7 @@ public class PlayerJump : MonoBehaviour
     {
         return Physics2D.Raycast(groundCheck.position, Vector2.down, raycastDistance, groundMask);
     }
-    private void LateUpdate()
-    {
-        //animator.SetBool("OnGround", rb.velocity.y == 0);
-    }
+
 
     private void OnDrawGizmos()
     { 

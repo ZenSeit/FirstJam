@@ -6,23 +6,15 @@ public class ButtonActivator : MonoBehaviour
 {
     public Vector2 ladderNewPosition;
     public float speed;
-    public GameObject ladderPrefab;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject ladderGameObject;
+    public Sprite pressedButton;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            ladderPrefab.transform.position = new Vector2(ladderPrefab.transform.position.x + ladderNewPosition.x, ladderPrefab.transform.position.y + ladderNewPosition.y);
+            gameObject.GetComponent<SpriteRenderer>().sprite = pressedButton;
+            ladderGameObject.transform.position = new Vector2(ladderGameObject.transform.position.x + ladderNewPosition.x, ladderGameObject.transform.position.y + ladderNewPosition.y);
         }
     }
 
