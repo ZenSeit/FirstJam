@@ -16,10 +16,10 @@ MonoBehaviour:
   acceleration: 15
   deceleration: 20
   jumpForce: 5
-  fallMultiplier: 3
+  fallMultiplier: 2
   jumpTime: 0.2
-  jumpMultiplier: 0.1
-  jumpDecayPercentage: 0.8
+  jumpMultiplier: 0.2
+  jumpDecayPercentage: 0.3
   mutiplierScale: 0.5
   changeSizeDuration: 2
   changeSizeCoolDown: 2.2
