@@ -143,6 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e07e17d8f1f7f43bf48e52fc780572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ladderNewPosition: {x: 0, y: -3}
-  speed: 0
-  ladderPrefab: {fileID: 0}
+  ladderNewPosition: {x: 0, y: 0.05}
+  speed: 4
+  ladderGameObject: {fileID: 0}
