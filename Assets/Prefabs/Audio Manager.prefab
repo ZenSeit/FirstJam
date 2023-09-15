@@ -306,3 +306,4 @@ MonoBehaviour:
   SFXSource: {fileID: 8325839220080568205}
   clickSound: {fileID: 8300000, guid: dd234ac4103dd89449da3c162b19c362, type: 3}
   switchSound: {fileID: 8300000, guid: db81e54d07d0c3446895b432a17e4139, type: 3}
+  musicBackground: {fileID: 8300000, guid: 7ea8ad774f4a5a94e86e8d7ac1aefb64, type: 3}

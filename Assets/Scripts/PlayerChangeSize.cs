@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PlayerChangeSize : MonoBehaviour
     private PlayerInputActions playerControls;
     private InputAction changeSize;
     private float coolDownTimer;
+    public event Action<float> ChangeSizeActivated;
 
     [Header("Animation")]
     private Animator animator;
@@ -38,6 +40,7 @@ public class PlayerChangeSize : MonoBehaviour
         {
             coolDownTimer = characterStats.changeSizeCoolDown;
             StartCoroutine("ChangeSize");
+            ChangeSizeActivated?.Invoke(characterStats.changeSizeDuration);
         }
         
     }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -56,6 +55,11 @@ public class GameManager : MonoBehaviour
         currentCheckpoint= Instance.transform;
         SpawnPlayer();
 
+    }
+
+    public void HomeMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
