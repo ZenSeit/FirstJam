@@ -19,7 +19,8 @@ public class PlayerJump : MonoBehaviour
     private Vector2 gravity; // to operate easier with gravity
 
     private Rigidbody2D rb;
-    public Transform groundCheck; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
+    public Transform groundCheck1; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
+    public Transform groundCheck2; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
     private float raycastDistance = 0.3f;
     public LayerMask groundMask; // Layer of the ground to detect whenever the player touch the ground
     //public LayerMask obstaclesMask;
@@ -132,14 +133,15 @@ public class PlayerJump : MonoBehaviour
     /// <returns><c>true</c> if the player is grounded; otherwise, <c>false</c>.</returns>
     private bool isGrounded()
     {
-        return Physics2D.Raycast(groundCheck.position, Vector2.down, raycastDistance, groundMask);
+        return Physics2D.Raycast(groundCheck1.position, Vector2.down, raycastDistance, groundMask) || Physics2D.Raycast(groundCheck2.position, Vector2.down, raycastDistance, groundMask);
     }
 
 
     private void OnDrawGizmos()
     { 
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * raycastDistance);
+        Gizmos.DrawLine(groundCheck1.position, groundCheck1.position + Vector3.down * raycastDistance);
+        Gizmos.DrawLine(groundCheck2.position, groundCheck2.position + Vector3.down * raycastDistance);
     }
 }
 
