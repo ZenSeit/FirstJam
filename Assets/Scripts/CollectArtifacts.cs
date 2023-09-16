@@ -8,13 +8,13 @@ public class CollectArtifacts : MonoBehaviour
     int artifactsCollected = 0;
     public int artifactsToCollect = 3;
     public TextMeshProUGUI artifactsText; // Reference to the TextMeshPro object
-
+    [SerializeField] private LoadScene sceneManager;
     public void CollectArtifact()
     {
         artifactsCollected++;
         if (artifactsCollected >= artifactsToCollect)
         {
-            GameManager.Instance.YouWin();
+            sceneManager.MainMenu();
         }
         ChangeItemsHUD();
     }
