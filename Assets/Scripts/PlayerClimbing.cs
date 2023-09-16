@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using UnityEngine;
 
 public class PlayerClimbing : MonoBehaviour
@@ -9,11 +10,13 @@ public class PlayerClimbing : MonoBehaviour
     [SerializeField] float ClimbSpeed;
     CapsuleCollider2D myCapsuleCollider;
     float initialGravityScale;
+    Animator animator;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
@@ -34,10 +37,15 @@ public class PlayerClimbing : MonoBehaviour
         if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))) 
         {
             rb.gravityScale = initialGravityScale;
+            animator.SetBool("Climb", false);
             return;
         }
+
         Vector2 climbVelocity = new Vector2(rb.velocity.x, yInput * ClimbSpeed);
         rb.velocity = climbVelocity;
         rb.gravityScale = 0f;
+        bool hasVerticalSpeed= Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
+        animator.SetBool("Climb", hasVerticalSpeed);
+        Debug.Log("Estoy en Climb");
     }
 }

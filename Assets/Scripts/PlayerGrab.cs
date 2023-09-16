@@ -12,9 +12,12 @@ public class PlayerGrab : MonoBehaviour
     public bool canGrab = true;
 
     private PlayerMovement movement;
+
+    private Animator GrabAnimator;
     private void Awake()
     {
-        movement = GetComponent<PlayerMovement>();        
+        movement = GetComponent<PlayerMovement>();
+        GrabAnimator = GetComponent<Animator>();
     }
     void Start()
     {
