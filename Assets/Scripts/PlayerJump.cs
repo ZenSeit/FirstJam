@@ -71,6 +71,7 @@ public class PlayerJump : MonoBehaviour
             isJumpPressed = false;
 
         animator.SetBool("OnGround", isGrounded());
+        animator.SetFloat("VerticalVelocity", rb.velocity.y);
     }
 
     void FixedUpdate()
