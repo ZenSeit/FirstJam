@@ -29,6 +29,7 @@ public class PlayerGrab : MonoBehaviour
     void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(grabpoint.position, Vector2.right *movement.facingDir , objectCheckDistance, whatIsObject);
+        if(Input.GetMouseButton(0)) animator.SetBool("Grab", true);
         if (hit && Input.GetMouseButton(0) && canGrab)
         {
             animator.SetBool("Grab", true);
@@ -45,7 +46,7 @@ public class PlayerGrab : MonoBehaviour
         if (!hit)
         {
             movement.canFlip = true;
-            animator.SetBool("Grab", false);
+            //animator.SetBool("Grab", false);
         }
     }
 
