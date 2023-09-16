@@ -45,7 +45,7 @@ public class PlayerClimbing : MonoBehaviour
         rb.velocity = climbVelocity;
         rb.gravityScale = 0f;
         bool hasVerticalSpeed= Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
-        animator.SetBool("Climb", hasVerticalSpeed);
-        Debug.Log("Estoy en Climb");
+        animator.SetBool("Climb", true);
+        animator.SetBool("Climbing", hasVerticalSpeed);
     }
 }
