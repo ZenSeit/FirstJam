@@ -69,7 +69,6 @@ public class PlayerJump : MonoBehaviour
         if (jump.WasPressedThisFrame())
         {
             isJumpPressed = true;
-            animator.SetTrigger("Jump");
         }
 
         if (jump.WasReleasedThisFrame())

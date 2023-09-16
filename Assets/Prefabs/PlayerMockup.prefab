@@ -399,6 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   artifactsToCollect: 3
   artifactsText: {fileID: 0}
+  sceneManager: {fileID: 0}
 --- !u!114 &4428954789969947473
 MonoBehaviour:
   m_ObjectHideFlags: 0
