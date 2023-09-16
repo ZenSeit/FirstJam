@@ -67,7 +67,10 @@ public class PlayerJump : MonoBehaviour
             jumpBuffer = true;
 
         if (jump.WasPressedThisFrame())
+        {
             isJumpPressed = true;
+            animator.SetTrigger("Jump");
+        }
 
         if (jump.WasReleasedThisFrame())
             isJumpPressed = false;

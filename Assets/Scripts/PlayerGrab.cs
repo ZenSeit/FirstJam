@@ -8,6 +8,7 @@ public class PlayerGrab : MonoBehaviour
     public Transform grabpoint;
     public float objectCheckDistance;
     public Vector2 offSetGrab;
+    private Animator animator;
 
     public bool canGrab = true;
 
@@ -18,6 +19,7 @@ public class PlayerGrab : MonoBehaviour
     {
         movement = GetComponent<PlayerMovement>();
         GrabAnimator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
@@ -29,20 +31,21 @@ public class PlayerGrab : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(grabpoint.position, Vector2.right *movement.facingDir , objectCheckDistance, whatIsObject);
         if (hit && Input.GetMouseButton(0) && canGrab)
         {
+            animator.SetBool("Grab", true);
             movement.canFlip = false;
             //hit.rigidbody.mass = 1f;
             hit.transform.position = transform.position - new Vector3(offSetGrab.x * -movement.facingDir, offSetGrab.y, 0);
         }
 
-        //if (Input.GetMouseButtonUp(0) && hit)
-        //{
-        //    hit.rigidbody.mass = 200f;
-        //    movement.canFlip = true;
-        //}
+        if (Input.GetMouseButtonUp(0))
+        {
+            animator.SetBool("Grab", false);
+        }
 
         if (!hit)
         {
             movement.canFlip = true;
+            animator.SetBool("Grab", false);
         }
     }
 
