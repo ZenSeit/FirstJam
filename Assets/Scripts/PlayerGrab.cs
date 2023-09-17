@@ -1,25 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerGrab : MonoBehaviour
 {
+    [Header("Grab info")]
     public LayerMask whatIsObject;
     public Transform grabpoint;
     public float objectCheckDistance;
     public Vector2 offSetGrab;
+    public bool canGrab = true;
+
     private Animator animator;
 
-    public bool canGrab = true;
+    private PlayerInputActions playerControls;
+    private InputAction grab;
 
     private PlayerMovement movement;
 
     private Animator GrabAnimator;
     private void Awake()
     {
+        playerControls = new PlayerInputActions();
         movement = GetComponent<PlayerMovement>();
         GrabAnimator = GetComponent<Animator>();
         animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        grab = playerControls.Player.Grab;
+        grab.Enable();
     }
     void Start()
     {
@@ -29,8 +41,8 @@ public class PlayerGrab : MonoBehaviour
     void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(grabpoint.position, Vector2.right *movement.facingDir , objectCheckDistance, whatIsObject);
-        if(Input.GetMouseButton(0)) animator.SetBool("Grab", true);
-        if (hit && Input.GetMouseButton(0) && canGrab)
+        if(grab.IsPressed()) animator.SetBool("Grab", true);
+        if (hit && grab.IsPressed() && canGrab)
         {
             animator.SetBool("Grab", true);
             movement.canFlip = false;
@@ -38,7 +50,7 @@ public class PlayerGrab : MonoBehaviour
             hit.transform.position = transform.position - new Vector3(offSetGrab.x * -movement.facingDir, offSetGrab.y, 0);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (grab.WasReleasedThisFrame())
         {
             animator.SetBool("Grab", false);
         }
