@@ -231,7 +231,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 8069427469069732147}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 05754cd7c5174c844b3cd14a85411d4e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -316,6 +316,7 @@ MonoBehaviour:
   groundCheck1: {fileID: 8612267489419756815}
   groundCheck2: {fileID: 1696989335430669498}
   groundCheck3: {fileID: 7513977226575132348}
+  raycastDistance: 0.06
   groundMask:
     serializedVersion: 2
     m_Bits: 192

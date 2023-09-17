@@ -22,7 +22,7 @@ public class PlayerJump : MonoBehaviour
     public Transform groundCheck1; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
     public Transform groundCheck2; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
     public Transform groundCheck3; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
-    private float raycastDistance = 0.3f;
+    public float raycastDistance = 0.1f;
     public LayerMask groundMask; // Layer of the ground to detect whenever the player touch the ground
     //public LayerMask obstaclesMask;
     //public LayerMask combinedMask;
@@ -36,7 +36,7 @@ public class PlayerJump : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerControls = new PlayerInputActions();
+        playerControls = new PlayerInputActions();  
         animator = GetComponent<Animator>();
 
     }
