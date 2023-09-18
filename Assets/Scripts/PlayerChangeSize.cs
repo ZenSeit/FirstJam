@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,15 @@ public class PlayerChangeSize : MonoBehaviour
     private PlayerInputActions playerControls;
     private InputAction changeSize;
     private float coolDownTimer;
+    public event Action<float> ChangeSizeActivated;
+
+    [Header("Animation")]
+    private Animator animator;
 
     private void Awake()
     {
-        
         playerControls = new PlayerInputActions();
+        animator = GetComponent<Animator>();
     }
    
     private void OnEnable()
@@ -35,6 +40,7 @@ public class PlayerChangeSize : MonoBehaviour
         {
             coolDownTimer = characterStats.changeSizeCoolDown;
             StartCoroutine("ChangeSize");
+            ChangeSizeActivated?.Invoke(characterStats.changeSizeDuration);
         }
         
     }
@@ -46,5 +52,6 @@ public class PlayerChangeSize : MonoBehaviour
         transform.localScale = new Vector2(1f* characterStats.mutiplierScale, 1f* characterStats.mutiplierScale);
         yield return new WaitForSeconds(characterStats.changeSizeDuration);
         transform.localScale = initialScale;
+        animator.SetBool("TinyMode", true);
     }
 }

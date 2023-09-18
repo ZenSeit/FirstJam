@@ -7,7 +7,7 @@ public class SpikeDamage : MonoBehaviour
     [SerializeField] private int damage = 50;
 
     bool canDamage = true;
-
+    /*
     private void OnCollisionStay2D(Collision2D other) {
         if (canDamage && other.gameObject.CompareTag("Player"))
         {
@@ -27,6 +27,14 @@ public class SpikeDamage : MonoBehaviour
 
         canDamage = true;
     }
-    
+    */
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+        }
+    }
 
 }

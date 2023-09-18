@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,17 +14,17 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (Instance != this)
         {
             Destroy(gameObject);
         }
     }
-
+    
     private void Start()
     {
-        SpawnPlayer();
+        //SpawnPlayer();
+        playerInstance = FindObjectOfType<PlayerMovement>().gameObject;
     }
     
     public void UpdateCheckPoint(Transform checkpoint)
@@ -57,5 +56,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void HomeMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void YouWin()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
 

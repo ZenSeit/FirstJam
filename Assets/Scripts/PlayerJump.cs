@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TerrainUtils;
 /// <summary>
 /// Controls the movement of the player character.
 /// </summary>
@@ -18,14 +19,25 @@ public class PlayerJump : MonoBehaviour
     private Vector2 gravity; // to operate easier with gravity
 
     private Rigidbody2D rb;
-    public Transform groundCheck; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
-    private Vector2 capsuleSize = new Vector2(0.55f, 0.17f); // Size obtained by visually measuring the capsule in the scene at the specified Transform
+    public Transform groundCheck1; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
+    public Transform groundCheck2; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
+    public Transform groundCheck3; // helps handling the isGrounded() method with an horizontal capsule draw at this positon
+    public float raycastDistance = 0.1f;
     public LayerMask groundMask; // Layer of the ground to detect whenever the player touch the ground
+    //public LayerMask obstaclesMask;
+    //public LayerMask combinedMask;
+
+    [Header("Animation")]
+    private Animator animator;
+    
+
+    
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerControls = new PlayerInputActions();
+        playerControls = new PlayerInputActions();  
+        animator = GetComponent<Animator>();
 
     }
 
@@ -45,6 +57,7 @@ public class PlayerJump : MonoBehaviour
         isJumpPressed = false;
         isJumping = false;
         gravity = new Vector2(0, -Physics2D.gravity.y);
+        //combinedMask = groundMask | obstaclesMask;
     }
 
     void Update()
@@ -54,10 +67,15 @@ public class PlayerJump : MonoBehaviour
             jumpBuffer = true;
 
         if (jump.WasPressedThisFrame())
+        {
             isJumpPressed = true;
+        }
 
         if (jump.WasReleasedThisFrame())
             isJumpPressed = false;
+
+        animator.SetBool("OnGround", isGrounded());
+        animator.SetFloat("VerticalVelocity", rb.velocity.y);
     }
 
     void FixedUpdate()
@@ -69,6 +87,7 @@ public class PlayerJump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, characterStats.jumpForce);
             jumpCounter = 0;
             jumpBuffer = false;
+            
         }
 
         if (!isJumpPressed)
@@ -82,6 +101,7 @@ public class PlayerJump : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * characterStats.jumpDecayPercentage);
             }
+            
         }
 
         // Handles dynamic jumping and dynamic fall
@@ -100,13 +120,15 @@ public class PlayerJump : MonoBehaviour
                 currentJump = characterStats.jumpMultiplier * (1 - t);
             }
 
+            
             rb.velocity += gravity * currentJump * Time.fixedDeltaTime;
         }
 
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity -= gravity * characterStats.fallMultiplier * Time.fixedDeltaTime;
-        }
+        
+        //if (rb.velocity.y <= 0)
+        //{
+        //    rb.velocity -= gravity * characterStats.fallMultiplier * Time.fixedDeltaTime;
+        //}
     }
 
     /// <summary>
@@ -115,7 +137,16 @@ public class PlayerJump : MonoBehaviour
     /// <returns><c>true</c> if the player is grounded; otherwise, <c>false</c>.</returns>
     private bool isGrounded()
     {
-        return Physics2D.OverlapCapsule(groundCheck.position, capsuleSize, CapsuleDirection2D.Horizontal, 0, groundMask);
+        return Physics2D.Raycast(groundCheck1.position, Vector2.down, raycastDistance, groundMask) || Physics2D.Raycast(groundCheck2.position, Vector2.down, raycastDistance, groundMask) || Physics2D.Raycast(groundCheck3.position, Vector2.down, raycastDistance, groundMask);
+    }
+
+
+    private void OnDrawGizmos()
+    { 
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(groundCheck1.position, groundCheck1.position + Vector3.down * raycastDistance);
+        Gizmos.DrawLine(groundCheck2.position, groundCheck2.position + Vector3.down * raycastDistance);
+        Gizmos.DrawLine(groundCheck3.position, groundCheck3.position + Vector3.down * raycastDistance);
     }
 }
 
