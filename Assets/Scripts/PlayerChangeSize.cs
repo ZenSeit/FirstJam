@@ -16,10 +16,13 @@ public class PlayerChangeSize : MonoBehaviour
     [Header("Animation")]
     private Animator animator;
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
         playerControls = new PlayerInputActions();
         animator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
    
     private void OnEnable()
@@ -40,6 +43,7 @@ public class PlayerChangeSize : MonoBehaviour
         {
             coolDownTimer = characterStats.changeSizeCoolDown;
             StartCoroutine("ChangeSize");
+            audioManager.PlaySFXSound(audioManager.transformationSound);
             ChangeSizeActivated?.Invoke(characterStats.changeSizeDuration);
         }
         

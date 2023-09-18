@@ -81,3 +81,4 @@ MonoBehaviour:
   ladderNewPosition: {x: 0, y: 0}
   speed: 0
   ladderGameObject: {fileID: 0}
+  pressedButton: {fileID: 386357138, guid: 7d344e4c6cedae84db691007b8700f75, type: 3}
