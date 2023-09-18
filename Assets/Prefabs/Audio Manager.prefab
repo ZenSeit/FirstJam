@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 4983199769341267431}
   m_Layer: 0
   m_Name: Audio Manager
-  m_TagString: Untagged
+  m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,5 +305,10 @@ MonoBehaviour:
   musicSource: {fileID: 5290648217063734217}
   SFXSource: {fileID: 8325839220080568205}
   clickSound: {fileID: 8300000, guid: dd234ac4103dd89449da3c162b19c362, type: 3}
+  rollOver: {fileID: 8300000, guid: fd4d0a4bcb9d1244bb653b078e18b949, type: 3}
   switchSound: {fileID: 8300000, guid: db81e54d07d0c3446895b432a17e4139, type: 3}
   musicBackground: {fileID: 8300000, guid: 00379ff33019bab4c9495c70aa3c3ff7, type: 3}
+  jumpSound: {fileID: 8300000, guid: ac3cc996109c14de6a801d1809ac5029, type: 3}
+  dieSound: {fileID: 8300000, guid: c1bc40e9075534f9883915554a92020f, type: 3}
+  transformationSound: {fileID: 8300000, guid: f0304227573024abb878a0435f77db98, type: 3}
+  coinSound: {fileID: 8300000, guid: 28ea8f2e445024d93884e4bc4ba1e834, type: 3}

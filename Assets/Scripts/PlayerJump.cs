@@ -8,10 +8,13 @@ public class PlayerJump : MonoBehaviour
 {
     [SerializeField] private CharacterStatsScriptableObject characterStats;
 
+    private AudioManager audioManager;
+
     private PlayerInputActions playerControls;
     private InputAction jump;
 
     private bool isJumpPressed;
+    private bool wasJumpReleased = true;
     private bool isJumping;
     private float jumpCounter; // Handles how much extra time the player can jump to get extra height
     private bool jumpBuffer; // to check if the player is using the buffer
@@ -38,6 +41,7 @@ public class PlayerJump : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerControls = new PlayerInputActions();  
         animator = GetComponent<Animator>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
     }
 
@@ -72,7 +76,11 @@ public class PlayerJump : MonoBehaviour
         }
 
         if (jump.WasReleasedThisFrame())
+        {
             isJumpPressed = false;
+            wasJumpReleased = true;
+        }
+            
 
         animator.SetBool("OnGround", isGrounded());
         animator.SetFloat("VerticalVelocity", rb.velocity.y);
@@ -81,8 +89,10 @@ public class PlayerJump : MonoBehaviour
     void FixedUpdate()
     {
         // Handles jump logic
-        if ((isJumpPressed || jumpBuffer) && isGrounded())
+        if ((isJumpPressed || jumpBuffer) && isGrounded() && wasJumpReleased)
         {
+            wasJumpReleased = false;
+            audioManager.PlaySFXSound(audioManager.jumpSound);
             isJumping = true;
             rb.velocity = new Vector2(rb.velocity.x, characterStats.jumpForce);
             jumpCounter = 0;

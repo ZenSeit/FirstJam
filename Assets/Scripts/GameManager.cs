@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     private GameObject playerInstance;
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
         if (Instance == null)
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     
     private void Start()
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDied()
     {
         playerInstance.transform.position = currentCheckpoint.position;
+        audioManager.PlaySFXSound(audioManager.dieSound);
     }
 
     [ContextMenu("Game Over")]
