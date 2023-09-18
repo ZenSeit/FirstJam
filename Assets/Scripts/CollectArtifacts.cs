@@ -14,7 +14,7 @@ public class CollectArtifacts : MonoBehaviour
         artifactsCollected++;
         if (artifactsCollected >= artifactsToCollect)
         {
-            sceneManager.MainMenu();
+            sceneManager.Winner();
         }
         ChangeItemsHUD();
     }
