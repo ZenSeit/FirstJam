@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
             playerHUD.SetActive(false);
             playerChangeSize.enabled = false;
             playerMovement.enabled = false;
-            Time.timeScale = 0.0f;
+            SetTimeScale(0f);
         }
         else
         {
@@ -46,7 +46,13 @@ public class PauseMenu : MonoBehaviour
             playerHUD.SetActive(true);
             playerChangeSize.enabled = true;
             playerMovement.enabled = true;
-            Time.timeScale = 1.0f;
+            SetTimeScale(1f);
         }
     }
+
+    public void SetTimeScale(float timeScale)
+    {
+        Time.timeScale = timeScale;
+    }
+
 }
